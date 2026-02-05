@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('apartments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('apartment_id')->constrained('apartments')->onDelete('cascade');
+            $table->longText('image')->nullable();
+            $table->string('name');
+            $table->foreignId('address_id')->constrained('addresses')->onDelete('cascade');
+            $table->integer('square');
+            $table->string('amenities');
+            $table->integer('number_of_guests');
+            $table->integer('price');
+            $table->foreignId('owner_id')->constrained('owners')->onDelete('cascade');
             $table->timestamps();
         });
     }
